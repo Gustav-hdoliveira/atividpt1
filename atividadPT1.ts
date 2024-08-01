@@ -1,3 +1,4 @@
+
 let reader = require('readline-sync')
 
 interface Aluno {
@@ -116,9 +117,19 @@ class Voo {
     proximoLivre(){
         console.log(this.numeroVoo[0], this.data[0])
     }
-    verifica(cadeira: number,cadeiras: Array<number> ): void{
+    verifica(cadeiravalor: number,cadeiras: Array<number> ): void{
         for (let i = 0; i < 100; i++) {
-            console.log(`cadeira nº ${i}:`)
+            while (i <= 100) {
+                let o = 1
+                cadeiravalor = i - o--
+                cadeiras[i] = cadeiravalor
+                if (cadeiras[i] >= 2) {
+                    console.log(`A cadeira nº ${i} está ocupada`)
+                } else {
+                    console.log(`A cadeira nº ${i} está livre`)
+                }
+                
+            }
         }
         
     }
