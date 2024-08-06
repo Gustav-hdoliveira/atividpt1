@@ -1,4 +1,5 @@
 
+
 let reader = require('readline-sync')
 
 interface Aluno {
@@ -21,7 +22,7 @@ class Aluno {
         this.notaTrabalho = notaTrabalho
     }
 
-    getvalues():void{
+    setvalues():void{
         let diaUp = reader.questionInt("Insira o dia do nascimento: ")
         let mesUp = reader.questionInt("Insira o mês de nascimento: ")
         let anoUp = reader.questionInt("Insira o ano de nascimento: ")
@@ -36,6 +37,11 @@ class Aluno {
         this.notaAval2 = notaAval2
         this.notaTrabalho = notaAval3
     }
+    getaluno():void{
+        console.log(`nome: ${this.nomeAluno}, data de nascimento: ${this.matricula[0]}/${this.matricula[1]}/${this.matricula[2]}, notas: ${this.notaAval1}, ${this.notaAval2}, ${this.notaTrabalho
+        }`);
+        
+    }
     media():number{
         return (this.notaAval1 + this.notaAval2 + this.notaTrabalho) / 3
     }
@@ -45,7 +51,7 @@ class Aluno {
 }
 
 //Questão 2
-interface Data {
+export interface Data {
     constructor(dia: number, mes: number, ano: number);
     compara(outraData: Data): number;
     getDia(): void;
@@ -55,85 +61,83 @@ interface Data {
     isBissexto(): void;
     clone(): void;
 }
-class Data {
+export class Data {
     dia: number
     mes: number
-    mesInt: string
     ano: number
-    bissexto: boolean
-    constructor(dia: number, mes: number,mesExtenso: string, ano: number,bissexto: boolean){
+    constructor(dia: number, mes: number, ano: number){
         this.dia = dia
         this.mes = mes
         this.ano = ano
-        this.bissexto = bissexto
     }
     comparar(outraData: Data):void{
-        if(this.dia == outraData.dia){
-            console.log('od dias são iguais');
-        } else {}
+        if(this.dia == outraData.dia && this.mes == outraData.mes && this.ano == outraData.ano){
+            console.log('as datas são iguais');
+        } else {
+            console.log("as datas são diferentes")
+        }
     }
     getDia(): void{
-        let diaUp = reader.questionInt('dia da data mágica: ')
-        this.dia = diaUp
+        return
     }
     getMes(): void{
         let mesUp = reader.questionInt('mes da data mágica: ')
         this.mes = mesUp
     }
     getMesExtenso(): void{
-        let mesExtensoUp = reader.questionInt('Escrevá o mes por extenso: ')
-        this.mesInt = mesExtensoUp
+        switch (this.mes) {
+            case 1:
+                console.log("janeiro")
+                break;
+            case 2:
+                console.log("fevereiro")
+                break;
+            case 3:
+                console.log("janeiro")
+                break;
+            case 4:
+                console.log("janeiro")
+                break;
+            case 5:
+                console.log("janeiro")
+                break;
+            case 6:
+                console.log("janeiro")
+                break;
+            case 7:
+                console.log("janeiro")
+                break;
+            case 8:
+                console.log("janeiro")
+                break;
+            case 9:
+                console.log("janeiro")
+                break;
+            case 10:
+                console.log("janeiro")
+                break;
+            case 11:
+                console.log("janeiro")
+                break;
+            case 12:
+                console.log("janeiro")
+                break;
+        }
     }
     getAno(): void{
         let anoUp = reader.questionInt('ano da data mágica: ')
         this.ano = anoUp
     }
     isBissexto(): void{
-        let bissextoUp = reader.question('O ano é bissexto? true ou false. ')
-        this.bissexto = bissextoUp
+        if (this.ano % 4 == 0 && this.ano % 100 != 0) {
+            console.log(true)
+        } else {
+            console.log(false)
+        }
     }
     clone(): void{
         let clone = `${this.dia}/${this.mes}/${this.ano}`
         console.log(clone)
     }
 }
-
-//Parte 3
-
-class Voo {
-    numeroVoo: number
-    data: string
-
-    constructor(numeroVoo: number, data: string){
-        this.numeroVoo = numeroVoo
-        this.data = data
-    }
-    setvoo(){
-        let vooup = reader.questionInt('qual o numero do proximo voo disponivel? ')
-        let dataUP = reader.question('qual a data do mesmo voo? ')
-        this.numeroVoo=vooup
-        this.data=dataUP
-    }
-    proximoLivre(){
-        console.log(this.numeroVoo[0], this.data[0])
-    }
-    verifica(cadeiravalor: number,cadeiras: Array<number> ): void{
-        for (let i = 0; i < 100; i++) {
-            while (i <= 100) {
-                let o = 1
-                cadeiravalor = i - o--
-                cadeiras[i] = cadeiravalor
-                if (cadeiras[i] >= 2) {
-                    console.log(`A cadeira nº ${i} está ocupada`)
-                } else {
-                    console.log(`A cadeira nº ${i} está livre`)
-                }
-                
-            }
-        }
-        
-    }
-
-}
-const voonovo = new Voo(20, "12/04/2024")
-voonovo.verifica(0, [0])
+let objum = new Data(10, 2, 2003)
